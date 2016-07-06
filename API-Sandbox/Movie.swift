@@ -20,7 +20,7 @@ struct Movie {
         self.name = json["im:name"]["label"].stringValue
         self.rightsOwner = json["rights"]["label"].stringValue
         self.price = Double(json["im:price"]["attributes"]["amount"].doubleValue)
-        self.link = json["link"][0]["href"].stringValue
+        self.link = json["link"][0]["attributes"]["href"].stringValue
         self.releaseDate = json["im:releaseDate"]["attributes"]["label"].stringValue
     }
 }

@@ -40,12 +40,18 @@ internal func exerciseOne() {
      call at <cell phone number>."
      
      */
+    let lastName = userData["results"][0]["name"]["last"].stringValue
+    let street = userData["results"][0]["location"]["street"].stringValue
+    let city = userData["results"][0]["location"]["city"].stringValue
+    let state = userData["results"][0]["location"]["state"].stringValue
+    let postcode = userData["results"][0]["location"]["postcode"].intValue
+    let title = userData["results"][0]["name"]["title"].stringValue
+    let email = userData["results"][0]["email"].stringValue
+    let cell = userData["results"][0]["cell"].stringValue
     
-    
-    
-    
-    
+    print("\(firstName) lives at \(street) in \(city), \(state), \(postcode). If you want to contact \(title). \(lastName), you can email \(email) or call at \(cell).")
 }
+
 
 internal func exerciseTwo() {
     // This would normally be network calls that return `NSData`. We'll show you how to do those soon!
@@ -70,6 +76,7 @@ internal func exerciseTwo() {
     
     print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
 }
+
 
 internal func exerciseThree() {
     // This would normally be network calls that return `NSData`. We'll show you how to do those soon!
