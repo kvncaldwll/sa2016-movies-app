@@ -49,7 +49,7 @@ internal func exerciseOne() {
     let email = userData["results"][0]["email"].stringValue
     let cell = userData["results"][0]["cell"].stringValue
     
-//    print("\(firstName) lives at \(street) in \(city), \(state), \(postcode). If you want to contact \(title). \(lastName), you can email \(email) or call at \(cell).")
+    print("\(firstName) lives at \(street) in \(city), \(state), \(postcode). If you want to contact \(title). \(lastName), you can email \(email) or call at \(cell).")
 }
 
 
@@ -74,7 +74,7 @@ internal func exerciseTwo() {
     
     // Uncomment this print statement when you are ready to check your code!
     
-//    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
+    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
 }
 
 

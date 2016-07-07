@@ -20,13 +20,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
+    var movie: Movie!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        exerciseOne()
-        exerciseTwo()
-        exerciseThree()
+//        exerciseOne()
+//        exerciseTwo()
+//        exerciseThree()
         
         let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
         // This code will call the iTunes top 25 movies endpoint listed above
@@ -39,7 +41,26 @@ class ViewController: UIViewController {
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
                     
+                    let allMovies = json["feed"]["entry"].arrayValue
+                    let castUInt32 = UInt32(allMovies.count)
+                    let selectRandom = arc4random_uniform(castUInt32)
+                    let backToInt = Int(selectRandom)
+                    let result = json["feed"]["entry"][backToInt]
+                    let toMovieStruct = Movie(json: result)
                     
+                    self.movieTitleLabel.text = toMovieStruct.name
+                    self.rightsOwnerLabel.text = toMovieStruct.rightsOwner
+                    self.releaseDateLabel.text = toMovieStruct.releaseDate
+                    self.priceLabel.text = String(toMovieStruct.price)
+                    self.loadPoster(toMovieStruct.image)
+                    
+                    self.movie = toMovieStruct
+//                    same as loadPoster(urlString) func
+//                    let url = NSURL(string: toMovieStruct.image)
+//                    let data = NSData(contentsOfURL: url!)
+//                    if data != nil {
+//                        self.posterImageView.image = UIImage(data: data!)
+//                    }
                 }
             case .Failure(let error):
                 print(error)
@@ -58,8 +79,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewOniTunesPressed(sender: AnyObject) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: self.movie.link)!)
     }
     
+    @IBAction func refreshButton(sender: AnyObject) {
+        viewDidLoad()
+    }
 }
 
