@@ -46,16 +46,16 @@ class ViewController: UIViewController {
                     let selectRandom = arc4random_uniform(castUInt32)
                     let backToInt = Int(selectRandom)
                     let result = json["feed"]["entry"][backToInt]
-                    let toMovieStruct = Movie(json: result)
+                    self.movie = Movie(json: result)
                     
-                    self.movieTitleLabel.text = toMovieStruct.name
-                    self.rightsOwnerLabel.text = toMovieStruct.rightsOwner
-                    self.releaseDateLabel.text = toMovieStruct.releaseDate
-                    self.priceLabel.text = String(toMovieStruct.price)
-                    self.loadPoster(toMovieStruct.image)
+                    self.movieTitleLabel.text = self.movie.name
+                    self.rightsOwnerLabel.text = self.movie.rightsOwner
+                    self.releaseDateLabel.text = self.movie.releaseDate
+                    self.priceLabel.text = String(self.movie.price)
+                    self.loadPoster(self.movie.image)
                     
-                    self.movie = toMovieStruct
-//                    same as loadPoster(urlString) func
+
+                    //                    same as loadPoster(urlString) func
 //                    let url = NSURL(string: toMovieStruct.image)
 //                    let data = NSData(contentsOfURL: url!)
 //                    if data != nil {
